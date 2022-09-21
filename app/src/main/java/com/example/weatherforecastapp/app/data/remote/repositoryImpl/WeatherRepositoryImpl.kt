@@ -1,18 +1,27 @@
 package com.example.weatherforecastapp.app.data.remote.repositoryImpl
 
-import com.example.weatherforecastapp.app.data.model.DataModel
+import com.example.weatherforecastapp.app.data.model.CityModel
 import com.example.weatherforecastapp.app.data.model.ErrorResponse
+import com.example.weatherforecastapp.app.data.model.WeatherModel
+import com.example.weatherforecastapp.app.data.remote.datasource.WeatherRemoteDataSource
 import com.example.weatherforecastapp.app.data.utils.Resource
-import com.example.weatherforecastapp.app.domain.ApiService
 import com.example.weatherforecastapp.app.domain.repository.ForecastRepository
 import com.squareup.moshi.Moshi
 import okhttp3.ResponseBody
 import retrofit2.Response
 
-class WeatherRepositoryImpl(apiService: ApiService) : ForecastRepository {
+class WeatherRepositoryImpl(private val remoteDataSource: WeatherRemoteDataSource) : ForecastRepository {
 
-    override suspend fun getWeatherToday(): Resource<DataModel> {
-        TODO("Not yet implemented")
+    override suspend fun getPositionOfCity(cityName : String): Resource<List<CityModel>> {
+        return safeApiCall {
+            remoteDataSource.getPositionOfCity(cityName)
+        }
+    }
+
+    override suspend fun getWeather(lat: Double, lon: Double): Resource<WeatherModel> {
+        return safeApiCall {
+            remoteDataSource.getWeather(lat,lon)
+        }
     }
 
     // we'll use this function in all

@@ -48,11 +48,10 @@ class MainActivity : BaseActivity(),CustomState {
 
             override fun afterTextChanged(s: Editable?) {
                 searchText = s.toString()
-                Log.d("text","$searchText")
             }
         })
         binding.confirmButton.setOnClickListener {
-            DetailForecastActivity.start(this,"Nakhon Pathom")
+            DetailForecastActivity.start(this,searchText)
         }
     }
 

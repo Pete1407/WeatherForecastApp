@@ -1,9 +1,12 @@
 package com.example.weatherforecastapp.app.data.remote.datasource
 
-import com.example.weatherforecastapp.app.data.model.DataModel
+import com.example.weatherforecastapp.app.data.model.CityModel
+import com.example.weatherforecastapp.app.data.model.WeatherModel
 import retrofit2.Response
 
 interface WeatherRemoteDataSource {
 
-    suspend fun getWeatherForecast():Response<DataModel>
+    suspend fun getPositionOfCity(cityName : String):Response<List<CityModel>>
+
+    suspend fun getWeather(lat : Double, lon : Double):Response<WeatherModel>
 }

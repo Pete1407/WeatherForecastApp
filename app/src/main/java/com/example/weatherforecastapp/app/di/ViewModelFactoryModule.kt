@@ -1,6 +1,7 @@
 package com.example.weatherforecastapp.app.di
 
 import com.example.weatherforecastapp.app.domain.usecase.GetForecastUseCase
+import com.example.weatherforecastapp.app.domain.usecase.GetWeatherUseCase
 import com.example.weatherforecastapp.feature.DetailForecast.DetailForecastViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -14,7 +15,10 @@ class ViewModelFactoryModule {
 
     @Singleton
     @Provides
-    fun provideDetailForecastViewModelFactory(getForecastUseCase: GetForecastUseCase):DetailForecastViewModelFactory{
-        return DetailForecastViewModelFactory(getForecastUseCase)
+    fun provideDetailForecastViewModelFactory(
+        getForecastUseCase: GetForecastUseCase,
+        getWeatherUseCase: GetWeatherUseCase
+    ):DetailForecastViewModelFactory{
+        return DetailForecastViewModelFactory(getForecastUseCase,getWeatherUseCase)
     }
 }

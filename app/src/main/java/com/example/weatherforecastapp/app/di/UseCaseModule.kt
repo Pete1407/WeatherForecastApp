@@ -2,6 +2,7 @@ package com.example.weatherforecastapp.app.di
 
 import com.example.weatherforecastapp.app.domain.repository.ForecastRepository
 import com.example.weatherforecastapp.app.domain.usecase.GetForecastUseCase
+import com.example.weatherforecastapp.app.domain.usecase.GetWeatherUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +17,11 @@ class UseCaseModule {
     @Provides
     fun provideGetForecastUseCase(repository: ForecastRepository):GetForecastUseCase{
         return GetForecastUseCase(repository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetWeatherUseCase(repository: ForecastRepository):GetWeatherUseCase{
+        return GetWeatherUseCase(repository)
     }
 }

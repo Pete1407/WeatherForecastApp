@@ -1,5 +1,6 @@
 package com.example.weatherforecastapp.app.di
 
+import com.example.weatherforecastapp.BuildConfig
 import com.example.weatherforecastapp.app.domain.ApiService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -38,7 +39,7 @@ class NetworkModule {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
         return Retrofit.Builder()
-            //.baseUrl(BuildConfig.BASEURL)
+            .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
