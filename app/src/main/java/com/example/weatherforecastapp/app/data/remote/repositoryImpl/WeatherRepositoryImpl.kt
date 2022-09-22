@@ -18,9 +18,9 @@ class WeatherRepositoryImpl(private val remoteDataSource: WeatherRemoteDataSourc
         }
     }
 
-    override suspend fun getWeather(lat: Double, lon: Double): Resource<WeatherModel> {
+    override suspend fun getWeather(lat: Double, lon: Double, unit : String?): Resource<WeatherModel> {
         return safeApiCall {
-            remoteDataSource.getWeather(lat,lon)
+            remoteDataSource.getWeather(lat,lon, unit)
         }
     }
 

@@ -11,6 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -40,10 +41,14 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginVertical="30dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:layout_marginTop="28dp"
             android:hint="@string/hint_search_bar"
-            app:layout_constraintTop_toBottomOf="@+id/greetingText" />
+            android:textColor="@color/white"
+            android:digits="@string/app_lan"
+            android:textColorHint="@color/white"
+            android:maxLines="1"
+            app:layout_constraintTop_toBottomOf="@+id/greetingText"
+            tools:layout_editor_absoluteX="30dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/confirmButton"
@@ -61,4 +66,10 @@
             app:layout_constraintTop_toBottomOf="@id/editText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.example.weatherforecastapp.app.base.CustomLoading
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="0dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@ import com.example.weatherforecastapp.app.domain.repository.ForecastRepository
 
 class GetWeatherUseCase(private val repository: ForecastRepository) {
 
-    suspend fun execute(lat : Double,lon : Double):Resource<WeatherModel>{
-        return repository.getWeather(lat,lon)
+    suspend fun execute(lat : Double,lon : Double,unit : String?):Resource<WeatherModel>{
+        return repository.getWeather(lat,lon,unit)
     }
 }

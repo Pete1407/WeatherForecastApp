@@ -1,6 +1,6 @@
 package com.example.weatherforecastapp.app.data.model
 
 data class ErrorResponse(
-    val code : Int,
-    val failureMessage : String
+    val code : Int? = 0,
+    val failureMessage : String? = null
 )

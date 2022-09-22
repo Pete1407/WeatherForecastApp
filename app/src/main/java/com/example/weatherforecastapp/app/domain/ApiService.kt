@@ -19,6 +19,7 @@ interface ApiService {
     suspend fun getWeatherToday(
         @Query("lat")lat : Double,
         @Query("lon")lon : Double,
+        @Query("units") units : String?,
         @Query("appid") appid: String = BuildConfig.API_KEY
     ):Response<WeatherModel>
 }

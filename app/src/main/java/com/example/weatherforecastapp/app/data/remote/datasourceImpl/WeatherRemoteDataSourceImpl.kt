@@ -12,7 +12,12 @@ class WeatherRemoteDataSourceImpl(private val apiService: ApiService) : WeatherR
         return apiService.getLocationOfCity(cityName)
     }
 
-    override suspend fun getWeather(lat: Double, lon: Double): Response<WeatherModel> {
-        return apiService.getWeatherToday(lat, lon)
+    override suspend fun getWeather(lat: Double, lon: Double,unit : String?): Response<WeatherModel> {
+        return if(!unit.isNullOrEmpty()){
+            apiService.getWeatherToday(lat, lon,unit)
+        }else{
+            apiService.getWeatherToday(lat,lon,null)
+        }
+
     }
 }

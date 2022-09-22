@@ -2,6 +2,9 @@ package com.example.weatherforecastapp.app.data.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 @JsonClass(generateAdapter = true)
 data class WeatherModel(
@@ -22,7 +25,7 @@ data class WeatherModel(
     @field:Json(name = "clouds")
     val clouds: Clouds? = null,
     @field:Json(name = "dt")
-    val dt: Int? = 0,
+    val dt: Long? = 0,
     @field:Json(name = "sys")
     val sys: Sys? = null,
     @field:Json(name = "timezone")

@@ -8,5 +8,5 @@ interface WeatherRemoteDataSource {
 
     suspend fun getPositionOfCity(cityName : String):Response<List<CityModel>>
 
-    suspend fun getWeather(lat : Double, lon : Double):Response<WeatherModel>
+    suspend fun getWeather(lat : Double, lon : Double, unit : String?):Response<WeatherModel>
 }

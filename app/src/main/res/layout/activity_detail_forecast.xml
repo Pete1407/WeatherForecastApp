@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue"
-        android:elevation="5dp"
         app:layout_constraintTop_toTopOf="parent">
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/cityName"
@@ -23,7 +22,96 @@
             tools:text="Bangkok"/>
     </androidx.appcompat.widget.Toolbar>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="@dimen/spacing_standard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_standard"
+            android:textColor="@color/black"
+            android:textSize="50sp"
+            app:layout_constraintEnd_toStartOf="@id/unit"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="31"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/unit"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/temperature"
+            app:layout_constraintStart_toEndOf="@id/temperature"
+            app:layout_constraintTop_toTopOf="@+id/temperature"
+            app:srcCompat="@drawable/icon_kelvin_unit" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:layout_margin="@dimen/spacing_standard"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Sep 20 Tue"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:visibility="invisible"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="@dimen/spacing_standard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date"
+        android:text="@string/text_humidity"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/valueHumidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_standard"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/humidity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/humidity"
+        app:layout_constraintTop_toBottomOf="@id/date"
+        tools:text="60%" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bg_confirm_button"
+        android:padding="10dp"
+        android:text="@string/text_wholeDay_forecast"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/loading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/humidity" />
+
     <com.example.weatherforecastapp.app.base.CustomLoading
+        android:id="@+id/loading"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="0dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

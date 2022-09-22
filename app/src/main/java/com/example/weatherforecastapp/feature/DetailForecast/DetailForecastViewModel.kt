@@ -29,15 +29,17 @@ class DetailForecastViewModel @Inject constructor(
         get() = weather
 
     fun getPositionOfCity(cityName : String){
+        city.postValue(Resource.Loading())
         viewModelScope.launch(Dispatchers.IO) {
             val result = getForecastUseCase.execute(cityName)
             city.postValue(Resource.Success(result.data))
         }
     }
 
-    fun getWeatherToday(lat: Double,lon : Double){
+    fun getWeatherToday(lat: Double,lon : Double,unit : String?){
+        weather.postValue(Resource.Loading())
         viewModelScope.launch(Dispatchers.IO) {
-            val result = getWeatherUseCase.execute(lat, lon)
+            val result = getWeatherUseCase.execute(lat, lon,unit)
             weather.postValue(Resource.Success(result.data))
         }
     }

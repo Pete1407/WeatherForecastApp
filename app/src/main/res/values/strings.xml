@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">WeatherForecastApp</string>
-    <string name="unit_celsius">Fahrenheit to Celsius unit</string>
-    <string name="unit_fahrenheit">Celsius to Fahrenheit unit</string>
-    <string name="text_search_bar"></string>
+    <string name="unit_celsius">Celsius unit</string>
+    <string name="unit_fahrenheit">Fahrenheit unit</string>
     <string name="text_greeting">Hello Weather</string>
     <string name="hint_search_bar">input name of city</string>
     <string name="text_confirm_button">confirm</string>
+    <string name="text_humidity">Humidity</string>
+    <string name="text_wholeDay_forecast">See More for whole day forecast</string>
+    <string name="app_lan">abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
 </resources>

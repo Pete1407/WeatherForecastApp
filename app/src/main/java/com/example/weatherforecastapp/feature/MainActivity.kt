@@ -9,10 +9,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.rickmorty.app.base.BaseActivity
 import com.example.rickmorty.app.base.CustomState
 import com.example.weatherforecastapp.R
+import com.example.weatherforecastapp.app.data.model.CityModel
+import com.example.weatherforecastapp.app.data.utils.Resource
 import com.example.weatherforecastapp.databinding.ActivityMainBinding
 import com.example.weatherforecastapp.feature.DetailForecast.DetailForecastActivity
 import com.example.weatherforecastapp.feature.DetailForecast.DetailForecastViewModel
@@ -20,12 +23,17 @@ import com.example.weatherforecastapp.feature.DetailForecast.DetailForecastViewM
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity(),CustomState {
 
     private var searchText : String = ""
     private val binding : ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+
+    @Inject
+    lateinit var viewModelFactory : DetailForecastViewModelFactory
+    private lateinit var viewModel : DetailForecastViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,20 +59,19 @@ class MainActivity : BaseActivity(),CustomState {
             }
         })
         binding.confirmButton.setOnClickListener {
+            //viewModel.getPositionOfCity(searchText)
             DetailForecastActivity.start(this,searchText)
         }
     }
 
-    override fun initViewModel() {
-
-    }
+    override fun initViewModel() {}
 
     override fun showLoading() {
-
+        binding.loading.showLoading()
     }
 
     override fun hideLoading() {
-
+        binding.loading.hideLoading()
     }
 
 }

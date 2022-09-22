@@ -8,6 +8,6 @@ interface ForecastRepository {
 
     suspend fun getPositionOfCity(cityName : String):Resource<List<CityModel>>
 
-    suspend fun getWeather(lat : Double,lon: Double):Resource<WeatherModel>
+    suspend fun getWeather(lat : Double,lon: Double, unit : String?):Resource<WeatherModel>
 
 }
