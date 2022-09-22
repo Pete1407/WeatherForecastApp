@@ -5,21 +5,23 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewbinding.BuildConfig
+import com.bumptech.glide.Glide
 import com.example.rickmorty.app.base.BaseActivity
 import com.example.rickmorty.app.base.CustomState
 import com.example.weatherforecastapp.R
 import com.example.weatherforecastapp.app.base.BaseKey
 import com.example.weatherforecastapp.app.data.model.CityModel
+import com.example.weatherforecastapp.app.data.model.Coord
 import com.example.weatherforecastapp.app.data.model.WeatherModel
 import com.example.weatherforecastapp.app.data.utils.DateHelper
 import com.example.weatherforecastapp.app.data.utils.Resource
 import com.example.weatherforecastapp.app.data.utils.extension.visible
 import com.example.weatherforecastapp.databinding.ActivityDetailForecastBinding
+import com.example.weatherforecastapp.feature.WholeDayForecast.WholeDayForecastActivity
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Retrofit
 import javax.inject.Inject
@@ -51,10 +53,10 @@ class DetailForecastActivity : BaseActivity(),CustomState {
 
     override fun onResume() {
         super.onResume()
-        viewModel.getPositionOfCity(cityName)
     }
 
     override fun initUI() {
+        viewModel.getPositionOfCity(cityName)
         binding.cityName.text = city?.local_names?.th
         binding.toolbar.inflateMenu(R.menu.unit_menu)
         binding.toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
@@ -77,6 +79,9 @@ class DetailForecastActivity : BaseActivity(),CustomState {
         }
         binding.toolbar.setNavigationOnClickListener {
             onBackPressed()
+        }
+        binding.button.setOnClickListener {
+            WholeDayForecastActivity.start(this,weather!!)
         }
     }
 
@@ -145,6 +150,11 @@ class DetailForecastActivity : BaseActivity(),CustomState {
         binding.humidity.visible()
         binding.humidity.text = "${resources.getString(R.string.text_humidity)} :"
         binding.valueHumidity.text = "${weatherResult.main?.humidity.toString()} %"
+//        val linkImage = "http://openweathermap.org/img/w/${weatherResult.weather.get(0).icon}.png"
+//        Log.d("image", linkImage)
+//        Glide.with(this)
+//            .load(linkImage)
+//            .into(binding.imageWeather)
     }
 
     companion object{

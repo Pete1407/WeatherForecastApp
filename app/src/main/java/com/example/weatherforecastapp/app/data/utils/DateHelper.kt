@@ -7,11 +7,14 @@ import java.util.*
 
 object DateHelper {
 
-    //private val simpleDateFormat = SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", Locale.ENGLISH)
-
     fun convertTimeStampToDate(timeStamp : Long): String {
         val calendar = Calendar.getInstance(Locale.getDefault())
         calendar.timeInMillis = timeStamp
         return DateFormat.format("dd MMM yyyy , HH:mm:ss", calendar).toString()
+    }
+
+    fun setDatePattern(format: String, locale: Locale = Locale.getDefault()): String {
+        val formatter = SimpleDateFormat(format, locale)
+        return formatter.format(this)
     }
 }

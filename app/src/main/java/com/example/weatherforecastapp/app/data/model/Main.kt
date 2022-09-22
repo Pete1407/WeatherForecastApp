@@ -1,8 +1,11 @@
 package com.example.weatherforecastapp.app.data.model
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @JsonClass(generateAdapter = true)
 data class Main(
     @field:Json(name="feels_like")
@@ -20,5 +23,7 @@ data class Main(
     @field:Json(name="temp_max")
     val temp_max: Double? = null,
     @field:Json(name="temp_min")
-    val temp_min: Double? = null
-)
+    val temp_min: Double? = null,
+    @field:Json(name ="temp_kf")
+    val temp_kf: Double? = null,
+):Parcelable

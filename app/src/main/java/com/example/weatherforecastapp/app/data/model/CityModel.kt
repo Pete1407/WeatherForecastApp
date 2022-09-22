@@ -16,5 +16,17 @@ data class CityModel(
     @field:Json(name = "country")
     val country: String? = null,
     @field:Json(name = "state")
-    val state: String? = null
+    val state: String? = null,
+    @field:Json(name = "coord")
+    val coord: Coord? = null,
+    @field:Json(name = "id")
+    val id: Int? = 0,
+    @field:Json(name = "population")
+    val population: Int? = 0,
+    @field:Json(name = "sunrise")
+    val sunrise: Int? = 0,
+    @field:Json(name = "sunset")
+    val sunset: Int? = 0,
+    @field:Json(name = "timezone")
+    val timezone: Int? = 0
 )

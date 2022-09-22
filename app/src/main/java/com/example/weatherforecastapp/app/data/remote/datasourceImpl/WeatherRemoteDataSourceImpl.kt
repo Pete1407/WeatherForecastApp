@@ -2,6 +2,7 @@ package com.example.weatherforecastapp.app.data.remote.datasourceImpl
 
 import com.example.weatherforecastapp.app.data.model.CityModel
 import com.example.weatherforecastapp.app.data.model.WeatherModel
+import com.example.weatherforecastapp.app.data.model.WholeDayForecastModel
 import com.example.weatherforecastapp.app.data.remote.datasource.WeatherRemoteDataSource
 import com.example.weatherforecastapp.app.domain.ApiService
 import retrofit2.Response
@@ -19,5 +20,9 @@ class WeatherRemoteDataSourceImpl(private val apiService: ApiService) : WeatherR
             apiService.getWeatherToday(lat,lon,null)
         }
 
+    }
+
+    override suspend fun getWholeDayForecast(lat: Double, lon: Double): Response<WholeDayForecastModel> {
+        return apiService.getWholeDayForecast(lat, lon)
     }
 }

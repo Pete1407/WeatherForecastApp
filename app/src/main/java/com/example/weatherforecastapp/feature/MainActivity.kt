@@ -59,7 +59,6 @@ class MainActivity : BaseActivity(),CustomState {
             }
         })
         binding.confirmButton.setOnClickListener {
-            //viewModel.getPositionOfCity(searchText)
             DetailForecastActivity.start(this,searchText)
         }
     }

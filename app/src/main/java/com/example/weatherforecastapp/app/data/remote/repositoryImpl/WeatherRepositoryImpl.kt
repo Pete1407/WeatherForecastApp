@@ -3,6 +3,7 @@ package com.example.weatherforecastapp.app.data.remote.repositoryImpl
 import com.example.weatherforecastapp.app.data.model.CityModel
 import com.example.weatherforecastapp.app.data.model.ErrorResponse
 import com.example.weatherforecastapp.app.data.model.WeatherModel
+import com.example.weatherforecastapp.app.data.model.WholeDayForecastModel
 import com.example.weatherforecastapp.app.data.remote.datasource.WeatherRemoteDataSource
 import com.example.weatherforecastapp.app.data.utils.Resource
 import com.example.weatherforecastapp.app.domain.repository.ForecastRepository
@@ -21,6 +22,12 @@ class WeatherRepositoryImpl(private val remoteDataSource: WeatherRemoteDataSourc
     override suspend fun getWeather(lat: Double, lon: Double, unit : String?): Resource<WeatherModel> {
         return safeApiCall {
             remoteDataSource.getWeather(lat,lon, unit)
+        }
+    }
+
+    override suspend fun getWholeDayForecast(lat: Double, lon: Double): Resource<WholeDayForecastModel> {
+        return safeApiCall {
+            remoteDataSource.getWholeDayForecast(lat,lon)
         }
     }
 
