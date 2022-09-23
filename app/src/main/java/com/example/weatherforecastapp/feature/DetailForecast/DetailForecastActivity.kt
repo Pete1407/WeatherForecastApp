@@ -1,5 +1,6 @@
 package com.example.weatherforecastapp.feature.DetailForecast
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -136,25 +137,19 @@ class DetailForecastActivity : BaseActivity(),CustomState {
                 it.data?.let { result ->
                     setWeatherDataToUI(result)
                 }
-
-
             }
             else -> {}
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setWeatherDataToUI(weatherResult : WeatherModel){
         binding.unit.visible()
         binding.temperature.text = weatherResult.main?.temp.toString()
         binding.date.text = DateHelper.convertTimeStampToDate(System.currentTimeMillis())
         binding.humidity.visible()
         binding.humidity.text = "${resources.getString(R.string.text_humidity)} :"
-        binding.valueHumidity.text = "${weatherResult.main?.humidity.toString()} %"
-//        val linkImage = "http://openweathermap.org/img/w/${weatherResult.weather.get(0).icon}.png"
-//        Log.d("image", linkImage)
-//        Glide.with(this)
-//            .load(linkImage)
-//            .into(binding.imageWeather)
+        binding.valueHumidity.text = "${weatherResult.main?.humidity.toString()} % ${getString(R.string.unit_humidity)}"
     }
 
     companion object{

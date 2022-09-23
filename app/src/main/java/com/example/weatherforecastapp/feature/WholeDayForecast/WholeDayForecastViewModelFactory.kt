@@ -3,8 +3,9 @@ package com.example.weatherforecastapp.feature.WholeDayForecast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.weatherforecastapp.app.domain.usecase.GetWholeDayForecastUseCase
+import javax.inject.Inject
 
-class WholeDayForecastViewModelFactory(
+class WholeDayForecastViewModelFactory @Inject constructor(
     private val getWholeDayForecastUseCase: GetWholeDayForecastUseCase
 ) : ViewModelProvider.Factory {
 
