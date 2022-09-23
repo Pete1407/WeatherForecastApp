@@ -6,7 +6,7 @@ import com.example.weatherforecastapp.app.domain.repository.ForecastRepository
 
 class GetWholeDayForecastUseCase(private val repository: ForecastRepository) {
 
-    suspend fun execute(lat : Double,lon : Double):Resource<WholeDayForecastModel>{
-        return repository.getWholeDayForecast(lat,lon)
+    suspend fun execute(lat : Double,lon : Double,unit : String?):Resource<WholeDayForecastModel>{
+        return repository.getWholeDayForecast(lat,lon,unit)
     }
 }

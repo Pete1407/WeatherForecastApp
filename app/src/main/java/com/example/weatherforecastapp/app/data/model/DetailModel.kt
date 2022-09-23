@@ -25,5 +25,7 @@ data class DetailModel(
     @field:Json(name = "weather")
     val weather: List<Weather> = arrayListOf(),
     @field:Json(name = "wind")
-    val wind: Wind? = null
+    val wind: Wind? = null,
+    @field:Json(name = "units")
+    var units : String? = null
 )

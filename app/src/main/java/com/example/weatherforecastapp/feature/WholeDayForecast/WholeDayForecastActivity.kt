@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.rickmorty.app.base.BaseActivity
 import com.example.rickmorty.app.base.CustomState
 import com.example.weatherforecastapp.R
+import com.example.weatherforecastapp.app.base.BaseKey
 import com.example.weatherforecastapp.app.data.model.Coord
 import com.example.weatherforecastapp.app.data.model.WeatherModel
 import com.example.weatherforecastapp.app.data.model.WholeDayForecastModel
@@ -24,7 +25,7 @@ class WholeDayForecastActivity : BaseActivity(),CustomState {
 
     private var weatherData : WeatherModel? = null
     private var adapter : WeatherAdapter? = null
-
+    private var unit : String = ""
     @Inject
     lateinit var viewModelFactory: WholeDayForecastViewModelFactory
     private lateinit var viewModel : WholeDayForecastViewModel
@@ -45,11 +46,24 @@ class WholeDayForecastActivity : BaseActivity(),CustomState {
     override fun initUI() {
         binding.cityName.text = weatherData?.name
         binding.toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+        binding.toolbar.inflateMenu(R.menu.unit_menu)
         setAdapter()
-        viewModel.getWholeDayForecast(weatherData?.coord?.lat!!,weatherData?.coord?.lon!!)
+        viewModel.getWholeDayForecast(weatherData?.coord?.lat!!,weatherData?.coord?.lon!!,null)
     }
 
     override fun initListener() {
+        binding.toolbar.setOnMenuItemClickListener {
+            val menuId = it.itemId
+            if(menuId == R.id.celsius_unit){
+                unit = BaseKey.CELSIUS
+                viewModel.getWholeDayForecast(weatherData?.coord?.lat!!,weatherData?.coord?.lon!!,unit)
+                return@setOnMenuItemClickListener true
+            }else{
+                unit = BaseKey.FAHRENHEIT
+                viewModel.getWholeDayForecast(weatherData?.coord?.lat!!,weatherData?.coord?.lon!!,unit)
+                return@setOnMenuItemClickListener it.itemId == R.id.fahrenheit_unit
+            }
+        }
         binding.toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
@@ -70,7 +84,7 @@ class WholeDayForecastActivity : BaseActivity(),CustomState {
 
     private fun setAdapter(){
         if(adapter == null){
-            adapter = WeatherAdapter(arrayListOf())
+            adapter = WeatherAdapter(arrayListOf(),unit)
         }
         binding.recyclerView.adapter = adapter
     }
@@ -82,7 +96,7 @@ class WholeDayForecastActivity : BaseActivity(),CustomState {
             }
             is Resource.Success ->{
                 hideLoading()
-                adapter?.refreshList(it.data?.list!!)
+                adapter?.refreshList(it.data?.list!!,unit)
             }
             else -> {}
         }

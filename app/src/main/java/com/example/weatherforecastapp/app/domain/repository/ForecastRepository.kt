@@ -12,5 +12,5 @@ interface ForecastRepository {
 
     suspend fun getWeather(lat : Double,lon: Double, unit : String?):Resource<WeatherModel>
 
-    suspend fun getWholeDayForecast(lat : Double, lon : Double):Resource<WholeDayForecastModel>
+    suspend fun getWholeDayForecast(lat : Double, lon : Double, unit : String?):Resource<WholeDayForecastModel>
 }

@@ -20,10 +20,10 @@ class WholeDayForecastViewModel @Inject constructor(
     val wholeDayForecastData : LiveData<Resource<WholeDayForecastModel>>
         get() = wholeDayForecast
 
-    fun getWholeDayForecast(lat : Double,lon : Double){
+    fun getWholeDayForecast(lat : Double,lon : Double,unit : String?){
         wholeDayForecast.postValue(Resource.Loading())
         viewModelScope.launch {
-            val result = getWholeDayForecastUseCase.execute(lat,lon)
+            val result = getWholeDayForecastUseCase.execute(lat,lon,unit)
             wholeDayForecast.postValue(result)
         }
     }

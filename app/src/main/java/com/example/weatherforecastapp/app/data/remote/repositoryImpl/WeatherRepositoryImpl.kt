@@ -25,9 +25,9 @@ class WeatherRepositoryImpl(private val remoteDataSource: WeatherRemoteDataSourc
         }
     }
 
-    override suspend fun getWholeDayForecast(lat: Double, lon: Double): Resource<WholeDayForecastModel> {
+    override suspend fun getWholeDayForecast(lat: Double, lon: Double, unit : String?): Resource<WholeDayForecastModel> {
         return safeApiCall {
-            remoteDataSource.getWholeDayForecast(lat,lon)
+            remoteDataSource.getWholeDayForecast(lat,lon, unit)
         }
     }
 

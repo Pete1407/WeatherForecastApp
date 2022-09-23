@@ -11,5 +11,5 @@ interface WeatherRemoteDataSource {
 
     suspend fun getWeather(lat : Double, lon : Double, unit : String?):Response<WeatherModel>
 
-    suspend fun getWholeDayForecast(lat : Double, lon : Double):Response<WholeDayForecastModel>
+    suspend fun getWholeDayForecast(lat : Double, lon : Double, unit : String?):Response<WholeDayForecastModel>
 }

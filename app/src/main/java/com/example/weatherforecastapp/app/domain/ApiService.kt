@@ -28,6 +28,7 @@ interface ApiService {
     suspend fun getWholeDayForecast(
         @Query("lat")lat : Double,
         @Query("lon")lon : Double,
+        @Query("units") units: String?,
         @Query("appid") appid : String = BuildConfig.API_KEY
     ):Response<WholeDayForecastModel>
 }

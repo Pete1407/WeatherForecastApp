@@ -22,7 +22,7 @@ class WeatherRemoteDataSourceImpl(private val apiService: ApiService) : WeatherR
 
     }
 
-    override suspend fun getWholeDayForecast(lat: Double, lon: Double): Response<WholeDayForecastModel> {
-        return apiService.getWholeDayForecast(lat, lon)
+    override suspend fun getWholeDayForecast(lat: Double, lon: Double, unit: String?): Response<WholeDayForecastModel> {
+        return apiService.getWholeDayForecast(lat, lon,unit)
     }
 }
