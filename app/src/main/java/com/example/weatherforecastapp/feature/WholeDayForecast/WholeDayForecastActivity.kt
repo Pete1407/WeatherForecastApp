@@ -26,8 +26,8 @@ class WholeDayForecastActivity : BaseActivity(),CustomState {
     private var weatherData : WeatherModel? = null
     private var adapter : WeatherAdapter? = null
     private var unit : String = ""
-    @Inject
-    lateinit var viewModelFactory: WholeDayForecastViewModelFactory
+//    @Inject
+//    lateinit var viewModelFactory: WholeDayForecastViewModelFactory
     private lateinit var viewModel : WholeDayForecastViewModel
 
     private val binding : ActivityWholeDayForecastBinding by lazy {
@@ -70,7 +70,7 @@ class WholeDayForecastActivity : BaseActivity(),CustomState {
     }
 
     override fun initViewModel() {
-        viewModel = ViewModelProvider(this,viewModelFactory).get(WholeDayForecastViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(WholeDayForecastViewModel::class.java)
         viewModel.wholeDayForecastData.observe(this,state)
     }
 

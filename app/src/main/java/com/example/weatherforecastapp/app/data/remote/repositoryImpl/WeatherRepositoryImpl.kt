@@ -10,8 +10,9 @@ import com.example.weatherforecastapp.app.domain.repository.ForecastRepository
 import com.squareup.moshi.Moshi
 import okhttp3.ResponseBody
 import retrofit2.Response
+import javax.inject.Inject
 
-class WeatherRepositoryImpl(private val remoteDataSource: WeatherRemoteDataSource) : ForecastRepository {
+class WeatherRepositoryImpl @Inject constructor(private val remoteDataSource: WeatherRemoteDataSource) : ForecastRepository {
 
     override suspend fun getPositionOfCity(cityName : String): Resource<List<CityModel>> {
         return safeApiCall {

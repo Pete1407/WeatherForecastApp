@@ -35,8 +35,8 @@ class DetailForecastActivity : BaseActivity(),CustomState {
     private var city : CityModel? = null
     private var weather : WeatherModel? = null
 
-    @Inject
-    lateinit var viewModelFactory: DetailForecastViewModelFactory
+//    @Inject
+//    lateinit var viewModelFactory: DetailForecastViewModelFactory
     private lateinit var viewModel : DetailForecastViewModel
 
     private val binding : ActivityDetailForecastBinding by lazy {
@@ -87,7 +87,7 @@ class DetailForecastActivity : BaseActivity(),CustomState {
     }
 
     override fun initViewModel() {
-        viewModel = ViewModelProvider(this,viewModelFactory).get(DetailForecastViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(DetailForecastViewModel::class.java)
         viewModel.cityValue.observe(this,cityResult)
         viewModel.weatherValue.observe(this,weatherResult)
     }
