@@ -6,8 +6,9 @@ import com.example.weatherforecastapp.app.data.model.WholeDayForecastModel
 import com.example.weatherforecastapp.app.data.remote.datasource.WeatherRemoteDataSource
 import com.example.weatherforecastapp.app.domain.ApiService
 import retrofit2.Response
+import javax.inject.Inject
 
-class WeatherRemoteDataSourceImpl(private val apiService: ApiService) : WeatherRemoteDataSource {
+class WeatherRemoteDataSourceImpl @Inject constructor(private val apiService: ApiService) : WeatherRemoteDataSource {
 
     override suspend fun getPositionOfCity(cityName : String): Response<List<CityModel>> {
         return apiService.getLocationOfCity(cityName)
