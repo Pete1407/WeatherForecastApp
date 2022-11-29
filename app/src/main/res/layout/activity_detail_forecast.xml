@@ -102,11 +102,12 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="@drawable/bg_confirm_button"
         android:padding="10dp"
+        android:layout_marginHorizontal="50dp"
         android:text="@string/text_wholeDay_forecast"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -115,6 +116,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/humidity" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonAirPollution"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:background="@drawable/bg_confirm_button"
+        android:padding="10dp"
+        android:layout_marginHorizontal="50dp"
+        android:text="@string/text_air_pollution"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/navHostFragment"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/toolbar"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        class="androidx.navigation.fragment.NavHostFragment"-->
+<!--        android:name="com.example.weatherforecastapp.feature.AirPollution.AirPollutionFragment"-->
+<!--        app:defaultNavHost="true"-->
+<!--        app:navGraph="@navigation/navigation_graph"/>-->
 
     <com.example.weatherforecastapp.app.base.CustomLoading
         android:id="@+id/loading"

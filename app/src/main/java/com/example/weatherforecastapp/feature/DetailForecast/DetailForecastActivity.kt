@@ -7,8 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.BuildConfig
 import com.bumptech.glide.Glide
 import com.example.rickmorty.app.base.BaseActivity
@@ -34,10 +39,9 @@ class DetailForecastActivity : BaseActivity(),CustomState {
     private var unit : String? = null
     private var city : CityModel? = null
     private var weather : WeatherModel? = null
-
     @Inject
     lateinit var viewModelFactory: DetailForecastViewModelFactory
-    private lateinit var viewModel : DetailForecastViewModel
+    private val viewModel : DetailForecastViewModel by viewModels()
 
     private val binding : ActivityDetailForecastBinding by lazy {
         ActivityDetailForecastBinding.inflate(layoutInflater)
@@ -46,6 +50,7 @@ class DetailForecastActivity : BaseActivity(),CustomState {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
         cityName = intent.getStringExtra(SEARCH_PARAM).toString()
         initViewModel()
         initListener()
@@ -87,7 +92,6 @@ class DetailForecastActivity : BaseActivity(),CustomState {
     }
 
     override fun initViewModel() {
-        viewModel = ViewModelProvider(this,viewModelFactory).get(DetailForecastViewModel::class.java)
         viewModel.cityValue.observe(this,cityResult)
         viewModel.weatherValue.observe(this,weatherResult)
     }

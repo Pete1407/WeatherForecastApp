@@ -11,5 +11,8 @@
     <string name="abrev_kelvin">K</string>
     <string name="abrev_celsius">C</string>
     <string name="abrev_fahrenheit">F</string>
+    <string name="text_air_pollution">Air Pollution</string>
     <string name="app_lan">abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
